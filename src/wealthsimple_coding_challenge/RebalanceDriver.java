@@ -2,26 +2,28 @@ package wealthsimple_coding_challenge;
 
 import java.util.*;
 
+
 public class RebalanceDriver {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		try {
-			List<Stock> stocks = deserialize(args);
+		List<Stock> stocks = deserialize(args);
+		if (stocks != null) {
 			Portfolio p = new Portfolio(stocks);
 			p.rebalance();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+		System.exit(0);
 	}
 	
-	public static List<Stock> deserialize(String[] args) throws Exception{
+	public static List<Stock> deserialize(String[] args){
 		List<Stock> stocks = new ArrayList<Stock>();
 		
 		for (int i = 0; i < args.length; i++){
 			String[] values = args[i].split(",");
-			if (values.length < 5) throw new Exception("Stock " + i + ": Invalid number of inputs!");
+			if (values.length < 5){
+				System.out.println("Stock " + i + ": Invalid number of inputs!");
+				return null;
+			}
 			String ticker = values[0];
 			try{
 				double target_alloc = Double.parseDouble(values[1]);
@@ -33,7 +35,7 @@ public class RebalanceDriver {
 			}
 			catch (Exception ex){
 				System.out.println("Exception in Stock " + i);
-				throw ex;
+				return null;
 			}
 		}
 		

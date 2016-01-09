@@ -2,10 +2,13 @@ package wealthsimple_coding_challenge;
 
 public class Stock {
 	public final String ticker;
+	public Double error_reduc;
+	public int shares_desired;
 	private double target_alloc;
 	private double actual_alloc;
 	private int shares_owned;
 	private double share_price;
+	
 	
 	public Stock(String ticker_name, double target, double actual, int shares, double price){
 		ticker = ticker_name;

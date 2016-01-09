@@ -2,48 +2,43 @@ package wealthsimple_challenge_tests;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import wealthsimple_coding_challenge.Stock;
+
 public class StockTest {
 
+	private static Stock s;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		s = new Stock("GOOG",60,50.96,52,98);
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
+		s = null;
 	}
 
 	@Test
 	public final void testGetTarget() {
-		fail("Not yet implemented");
+		assertSame(60, s.getTarget());
 	}
 
 	@Test
 	public final void testGetActual() {
-		fail("Not yet implemented");
+		assertSame(50.96, s.getActual());
 	}
 
 	@Test
 	public final void testGetSharesOwned() {
-		fail("Not yet implemented");
+		assertSame(52, s.getActual());
 	}
 
 	@Test
 	public final void testGetSharePrice() {
-		fail("Not yet implemented");
+		assertSame(98, s.getActual());
 	}
 
 }
